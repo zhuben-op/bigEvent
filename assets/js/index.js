@@ -47,8 +47,8 @@ function renderAvatar(user){
         $('.text-avatar').hide()
     }else{
         // 渲染文本头像
-        $('.layui-nav-img').hide()
         var first=name[0].toUpperCase()
         $('.text-avatar').html(`${first}`).show()
+        $('.layui-nav-img').hide()
     }
 }

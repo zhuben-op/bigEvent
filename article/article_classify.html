@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章类别</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article_classify.css">
+</head>
+<body>
+  <!-- 卡片区域 -->
+  <div class="layui-card">
+    <div class="layui-btn-group">
+        
+    </div>
+    <div class="layui-card-header">
+    <span> 文章分类</span>
+    <button type="button" class="layui-btn layui-btn-sm" id="btnAdd">添加分类</button>
+  </div>
+    <div class="layui-card-body">
+        <!-- 左侧的 label -->
+        
+        <table class="layui-table">
+            <colgroup>
+              <col width="150">
+              <col width="">
+              <col width="">
+              <col width="300">
+            </colgroup>
+            <thead>
+              
+              <tr>
+                <th>序号</th>
+                <th>分类名称</th>
+                <th>分类别名</th>
+                <th> 操作</th>
+              </tr> 
+            </thead>
+            <tbody id="tbd">
+            
+            </tbody>
+          </table>
+      </div>
+    </div>
+<!-- 定义模板引擎 -->
+<script type="text/html" id="tpl_table">
+  {{each data}}
+   <tr>
+  <td>{{$value.Id}}</td>
+  <td>{{$value.name}}</td>
+  <td>{{$value.alias}}</td>
+  <td>
+    <div class="layui-btn-container" style="float:left">
+      <button type="button" class="layui-btn layui-btn-danger layui-btn-xs btn-del" data-id="{{$value.Id}}">删除</button>
+      <button type="button" class="layui-btn layui-btn-xs btn-edit" data-id="{{$value.Id}}">修改</button>
+  </div>
+  </td>
+</tr>
+{{/each}}
+</script>
+<!-- 定义编辑分类弹出层的form表单 -->
+<script type="text/html" id="diagEdit">
+  <form class="layui-form" lay-filter="form-edit" id="form-edit">
+    <!-- 默认id行 -->
+  
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类id:</label>
+      <div class="layui-input-block">
+        <input type="text" name="Id" required  lay-verify="required" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类名称:</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类别名</label>
+      <div class="layui-input-block">
+        <input type="text" name="alias" required  lay-verify="required" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    
+      <div class="layui-form-item" style="float: left;">
+      <div class="layui-input-block" >
+        <button class="layui-btn" lay-submit lay-filter="formDemo">确定修改</button>
+        
+    
+    </div>
+     </div>
+    
+    </form>
+  </script>
+  
+<!-- 定义添加分类弹出层的form表单 -->
+<script type="text/html" id="diagAdd">
+<form class="layui-form" id="form-add">
+  <div class="layui-form-item">
+    <label class="layui-form-label">分类Id:</label>
+    <div class="layui-input-block">
+      <input type="text" name="Id" required  lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">分类名称:</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">分类别名</label>
+    <div class="layui-input-block">
+      <input type="text" name="alias" required  lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  
+    <div class="layui-form-item" style="float: left;">
+    <div class="layui-input-block" >
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+      <button class="layui-btn" lay-reset lay-filter="formDemo">提交</button>
+  
+  </div>
+   </div>
+  
+  </form>
+</script>
+
+    <script src="../assets/lib/layui/layui.all.js"></script>
+        <script src="../assets/lib/jquery.js"></script>
+        <script src="../assets/js/baseAPI.js"></script>
+        <script src="../assets/lib/template-web.js"></script>
+        <script src="../assets/js/article_classify.js"></script>
+</body>
+</html>
